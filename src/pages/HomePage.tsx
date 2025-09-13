@@ -1,24 +1,122 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui';
+import { useAuth } from '@/hooks';
+import { Users, MessageSquare, BookOpen, Sparkles } from 'lucide-react';
 
 const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+
+  const features = [
+    {
+      icon: Users,
+      title: 'Personagens AI',
+      description: 'Crie e personalize personagens únicos com personalidades distintas'
+    },
+    {
+      icon: MessageSquare,
+      title: 'Chat Interativo',
+      description: 'Converse em tempo real com seus personagens através de IA avançada'
+    },
+    {
+      icon: BookOpen,
+      title: 'Histórias Colaborativas',
+      description: 'Desenvolva histórias envolventes com seus personagens'
+    },
+    {
+      icon: Sparkles,
+      title: 'IA Generativa',
+      description: 'Utilize múltiplas IAs para criar conteúdo de qualidade'
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-foreground mb-4">
-            Welcome to CharHub
-          </h1>
-          <p className="text-lg text-muted-foreground mb-8">
-            Create, manage, and interact with your AI characters
-          </p>
-          <div className="space-x-4">
-            <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors">
-              Get Started
-            </button>
-            <button className="bg-secondary text-secondary-foreground px-6 py-3 rounded-lg hover:bg-secondary/90 transition-colors">
-              Learn More
-            </button>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      {/* Hero Section */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center max-w-4xl mx-auto">
+          <div className="flex items-center justify-center mb-6">
+            <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
+              <Sparkles className="h-8 w-8 text-white" />
+            </div>
           </div>
+
+          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            Bem-vindo ao <span className="text-blue-600">CharHub</span>
+          </h1>
+
+          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            Crie, gerencie e interaja com personagens AI únicos.
+            Desenvolva histórias envolventes e converse com suas criações através
+            de inteligência artificial avançada.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {isAuthenticated ? (
+              <Button
+                size="lg"
+                onClick={() => navigate('/dashboard')}
+                className="text-lg px-8 py-4"
+              >
+                Ir para Dashboard
+              </Button>
+            ) : (
+              <>
+                <Button
+                  size="lg"
+                  onClick={() => navigate('/register')}
+                  className="text-lg px-8 py-4"
+                >
+                  Começar Agora
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => navigate('/login')}
+                  className="text-lg px-8 py-4"
+                >
+                  Fazer Login
+                </Button>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+            >
+              <feature.icon className="h-10 w-10 text-blue-600 mb-4" />
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="bg-white rounded-2xl p-8 mt-20 text-center border border-gray-100 shadow-sm">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Pronto para começar sua jornada criativa?
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Junte-se a milhares de criadores que já estão usando o CharHub
+          </p>
+          {!isAuthenticated && (
+            <Button
+              size="lg"
+              onClick={() => navigate('/register')}
+            >
+              Criar Conta Gratuita
+            </Button>
+          )}
         </div>
       </div>
     </div>

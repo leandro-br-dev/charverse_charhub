@@ -7,10 +7,8 @@ import HomePage from '@/pages/HomePage';
 import LoginPage from '@/pages/LoginPage';
 import DashboardPage from '@/pages/DashboardPage';
 
-// Layout Components (to be created later)
-// import RootLayout from '@/components/layout/RootLayout';
-// import AuthLayout from '@/components/layout/AuthLayout';
-// import ProtectedRoute from '@/components/auth/ProtectedRoute';
+// Layout Components
+import { MainLayout } from '@/components/layout';
 
 const router = createBrowserRouter([
   {
@@ -21,11 +19,18 @@ const router = createBrowserRouter([
     path: ROUTES.LOGIN,
     element: <LoginPage />,
   },
+  // Protected routes with MainLayout
   {
-    path: ROUTES.DASHBOARD,
-    element: <DashboardPage />,
+    path: '/',
+    element: <MainLayout />,
+    children: [
+      {
+        path: ROUTES.DASHBOARD,
+        element: <DashboardPage />,
+      },
+      // More protected routes will be added here
+    ],
   },
-  // More routes will be added as we develop the features
 ]);
 
 const AppRouter: React.FC = () => {
