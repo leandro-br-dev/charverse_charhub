@@ -3,57 +3,104 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Light theme colors (default) */
+    --color-primary: 255 201 23; /* #FFC917 */
+    --color-primary-foreground: 22 22 24; /* #161618 - color-dark */
+    --color-secondary: 230 230 234; /* #E6E6EA - color-light */
+    --color-secondary-foreground: 47 47 47; /* #2F2F2F - color-title */
+    --color-background: 255 255 255; /* white */
+    --color-foreground: 47 47 47; /* #2F2F2F - color-content */
+    --color-card: 243 241 241; /* #f3f1f1 - color-normal */
+    --color-card-foreground: 47 47 47; /* #2F2F2F - color-title */
+    --color-muted: 230 230 234; /* #E6E6EA - color-light */
+    --color-muted-foreground: 156 156 156; /* #9C9C9C - color-description */
+    --color-border: 230 230 234; /* #E6E6EA - color-light */
+    --color-input: 243 241 241; /* #f3f1f1 - color-normal */
+    --color-ring: 255 201 23; /* #FFC917 */
+  }
+
+  .dark {
+    /* Dark theme colors */
+    --color-primary: 255 201 23; /* #FFC917 */
+    --color-primary-foreground: 22 22 24; /* #161618 - color-content-dark */
+    --color-secondary: 47 47 47; /* #2F2F2F - color-light (inverted) */
+    --color-secondary-foreground: 255 255 255; /* #FFFFFF - color-title (inverted) */
+    --color-background: 22 22 24; /* #161618 - color-normal (inverted) */
+    --color-foreground: 255 255 255; /* #FFFFFF - color-content (inverted) */
+    --color-card: 47 47 47; /* #2F2F2F - color-light (inverted) */
+    --color-card-foreground: 255 255 255; /* #FFFFFF - color-title (inverted) */
+    --color-muted: 47 47 47; /* #2F2F2F - color-light (inverted) */
+    --color-muted-foreground: 156 156 156; /* #9C9C9C - color-description (same) */
+    --color-border: 47 47 47; /* #2F2F2F - color-light (inverted) */
+    --color-input: 47 47 47; /* #2F2F2F - color-light (inverted) */
+    --color-ring: 255 201 23; /* #FFC917 */
+  }
+
+  * {
+    border-color: rgb(var(--color-border));
+  }
+
   body {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
-    color-scheme: light dark;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Ensure smooth transitions for theme changes */
+  * {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 }
 
 @layer utilities {
   .bg-background {
-    background-color: hsl(0 0% 100%);
+    background-color: rgb(var(--color-background));
   }
   .text-foreground {
-    color: hsl(224 71.4% 4.1%);
+    color: rgb(var(--color-foreground));
   }
   .bg-card {
-    background-color: hsl(0 0% 100%);
+    background-color: rgb(var(--color-card));
   }
   .text-card-foreground {
-    color: hsl(224 71.4% 4.1%);
+    color: rgb(var(--color-card-foreground));
   }
   .bg-primary {
-    background-color: hsl(220.9 39.3% 11%);
+    background-color: rgb(var(--color-primary));
   }
   .text-primary-foreground {
-    color: hsl(210 20% 98%);
+    color: rgb(var(--color-primary-foreground));
   }
   .bg-secondary {
-    background-color: hsl(220 14.3% 95.9%);
+    background-color: rgb(var(--color-secondary));
   }
   .text-secondary-foreground {
-    color: hsl(220.9 39.3% 11%);
+    color: rgb(var(--color-secondary-foreground));
+  }
+  .bg-muted {
+    background-color: rgb(var(--color-muted));
   }
   .text-muted-foreground {
-    color: hsl(220 8.9% 46.1%);
+    color: rgb(var(--color-muted-foreground));
+  }
+  .border-border {
+    border-color: rgb(var(--color-border));
   }
   .border-input {
-    border-color: hsl(220 13% 91%);
+    border-color: rgb(var(--color-input));
+  }
+  .ring-ring {
+    --tw-ring-color: rgb(var(--color-ring));
   }
   .focus\:ring-ring:focus {
-    --tw-ring-color: hsl(224 71.4% 4.1%);
-  }
-
-  .dark .bg-background {
-    background-color: hsl(224 71.4% 4.1%);
-  }
-  .dark .text-foreground {
-    color: hsl(210 20% 98%);
+    --tw-ring-color: rgb(var(--color-ring));
   }
 }

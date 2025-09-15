@@ -1,6 +1,7 @@
 // Export all services
 export { apiService } from './api';
 export { authService } from './authService';
+export { translationService } from './translationService';
 
 // Additional services to be created later:
 // export { characterService } from './characterService';

@@ -22,32 +22,32 @@ const DashboardPage: React.FC = () => {
       value: '3',
       change: '+2 este mês',
       icon: Users,
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-50',
+      color: 'text-primary',
+      bgColor: 'bg-muted',
     },
     {
       title: 'Histórias',
       value: '5',
       change: '+1 esta semana',
       icon: BookOpen,
-      color: 'text-green-600',
-      bgColor: 'bg-green-50',
+      color: 'text-primary',
+      bgColor: 'bg-muted',
     },
     {
       title: 'Conversas',
       value: '12',
       change: '+8 hoje',
       icon: MessageSquare,
-      color: 'text-purple-600',
-      bgColor: 'bg-purple-50',
+      color: 'text-primary',
+      bgColor: 'bg-muted',
     },
     {
       title: 'Créditos',
       value: user?.credits?.toString() || '100',
       change: 'Renovado em 7 dias',
       icon: CreditCard,
-      color: 'text-orange-600',
-      bgColor: 'bg-orange-50',
+      color: 'text-primary',
+      bgColor: 'bg-muted',
     },
   ];
 
@@ -57,21 +57,21 @@ const DashboardPage: React.FC = () => {
       description: 'Crie um novo personagem AI',
       icon: Users,
       action: () => navigate('/characters/create'),
-      color: 'bg-blue-600 hover:bg-blue-700',
+      color: 'bg-primary hover:bg-primary/90',
     },
     {
       title: 'Nova História',
       description: 'Comece uma nova história',
       icon: BookOpen,
       action: () => navigate('/stories/create'),
-      color: 'bg-green-600 hover:bg-green-700',
+      color: 'bg-primary hover:bg-primary/90',
     },
     {
       title: 'Iniciar Chat',
       description: 'Converse com seus personagens',
       icon: MessageSquare,
       action: () => navigate('/chat'),
-      color: 'bg-purple-600 hover:bg-purple-700',
+      color: 'bg-primary hover:bg-primary/90',
     },
   ];
 
@@ -98,16 +98,16 @@ const DashboardPage: React.FC = () => {
       {/* Welcome Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-foreground">
             Olá, {user?.name || 'Usuário'}! 👋
           </h1>
-          <p className="text-gray-600 mt-1">
+          <p className="text-muted-foreground mt-1">
             Seja bem-vindo de volta ao CharHub. Vamos criar algo incrível hoje?
           </p>
         </div>
         <div className="hidden md:flex items-center space-x-2">
-          <Calendar className="h-5 w-5 text-gray-500" />
-          <span className="text-sm text-gray-500">
+          <Calendar className="h-5 w-5 text-muted-foreground" />
+          <span className="text-sm text-muted-foreground">
             {new Date().toLocaleDateString('pt-BR', {
               weekday: 'long',
               year: 'numeric',

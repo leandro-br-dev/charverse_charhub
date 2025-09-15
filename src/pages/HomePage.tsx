@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 import { useAuth } from '@/hooks';
 import { Users, MessageSquare, BookOpen, Sparkles } from 'lucide-react';
 
@@ -32,21 +33,26 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-background">
+      {/* Theme Toggle */}
+      <div className="absolute top-4 right-4 z-10">
+        <ThemeToggle />
+      </div>
+
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-4xl mx-auto">
           <div className="flex items-center justify-center mb-6">
-            <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
-              <Sparkles className="h-8 w-8 text-white" />
+            <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-primary to-orange-600 flex items-center justify-center">
+              <Sparkles className="h-8 w-8 text-primary-foreground" />
             </div>
           </div>
 
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Bem-vindo ao <span className="text-blue-600">CharHub</span>
+          <h1 className="text-5xl font-bold text-foreground mb-6">
+            Bem-vindo ao <span className="text-primary">CharHub</span>
           </h1>
 
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+          <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
             Crie, gerencie e interaja com personagens AI únicos.
             Desenvolva histórias envolventes e converse com suas criações através
             de inteligência artificial avançada.
@@ -88,13 +94,13 @@ const HomePage: React.FC = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+              className="bg-card rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-border"
             >
-              <feature.icon className="h-10 w-10 text-blue-600 mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <feature.icon className="h-10 w-10 text-primary mb-4" />
+              <h3 className="text-lg font-semibold text-card-foreground mb-2">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 {feature.description}
               </p>
             </div>
@@ -102,11 +108,11 @@ const HomePage: React.FC = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-white rounded-2xl p-8 mt-20 text-center border border-gray-100 shadow-sm">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+        <div className="bg-card rounded-2xl p-8 mt-20 text-center border border-border shadow-sm">
+          <h2 className="text-2xl font-bold text-card-foreground mb-4">
             Pronto para começar sua jornada criativa?
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-muted-foreground mb-6">
             Junte-se a milhares de criadores que já estão usando o CharHub
           </p>
           {!isAuthenticated && (

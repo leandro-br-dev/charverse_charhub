@@ -9,12 +9,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-blue-600 hover:bg-blue-700 text-white focus:ring-blue-500',
-        secondary: 'bg-gray-100 hover:bg-gray-200 text-gray-900 focus:ring-gray-500',
-        destructive: 'bg-red-600 hover:bg-red-700 text-white focus:ring-red-500',
-        outline: 'border border-gray-300 bg-transparent hover:bg-gray-50 text-gray-700 focus:ring-gray-500',
-        ghost: 'bg-transparent hover:bg-gray-100 text-gray-700 focus:ring-gray-500',
-        link: 'text-blue-600 hover:text-blue-700 underline-offset-4 hover:underline focus:ring-blue-500',
+        primary: 'bg-primary hover:bg-primary/90 text-primary-foreground focus:ring-primary/20',
+        secondary: 'bg-secondary hover:bg-secondary/80 text-secondary-foreground focus:ring-secondary/20',
+        destructive: 'bg-red-600 hover:bg-red-700 text-white focus:ring-red-500/20 dark:bg-red-700 dark:hover:bg-red-800',
+        outline: 'border border-border bg-background hover:bg-muted text-foreground focus:ring-primary/20',
+        ghost: 'bg-transparent hover:bg-muted text-foreground focus:ring-primary/20',
+        link: 'text-primary hover:text-primary/80 underline-offset-4 hover:underline focus:ring-primary/20',
       },
       size: {
         sm: 'h-8 px-3 text-sm',
